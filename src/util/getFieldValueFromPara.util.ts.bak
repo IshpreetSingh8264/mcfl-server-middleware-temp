@@ -1,0 +1,26 @@
+/**
+ * Extract a value based on a field name mapping (dynamic ParaF/ParaV pairs)
+ * @param {Object} record - SAP OData record object
+ * @param {string} fieldName - Field name to search (e.g. "DATBI", "DATAB", "MATNR")
+ * @returns {string|null} - Matching value, or null if not found
+ */
+export function getFieldValue<T>(record: Record<string, unknown>, fieldName: keyof T) {
+  // Find all keys that look like ParaF*
+  const paraFields = Object.keys(record).filter(k => k.startsWith("ParaF"));
+
+  for (const key of paraFields) {
+    if (String(record[key]).toUpperCase() === String(fieldName).toUpperCase()) {
+      // get the number part of ParaF#
+      const suffix = key.replace("ParaF", "");
+      const valueKey = `ParaV${suffix}`;
+      return (record[valueKey] as string) ?? null;
+    }
+  }
+
+  if (fieldName in record) {
+    const fieldKey = fieldName as string;
+    return record[fieldKey] ?? null;
+  }
+
+  return null;
+}

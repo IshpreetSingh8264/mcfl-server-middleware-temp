@@ -1,0 +1,45 @@
+{
+  "name": "hero-ecotech-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc && cp src/hero-firebase-adminsdk.json lib",
+    "build:watch": "npx ts-node-dev --respawn --transpile-only src/index.ts",
+    "start": "node lib/index.js",
+    "lint": "eslint 'src/**/*.ts'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@google-cloud/storage": "^7.17.3",
+    "algoliasearch": "^5.47.0",
+    "axios": "^1.10.0",
+    "busboy": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "express-multipart-file-parser": "^0.1.2",
+    "firebase-admin": "^13.4.0",
+    "moment": "^2.30.1",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@types/busboy": "^1.5.4",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/express-multipart-file-parser": "^0.1.3",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^24.0.14",
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.32.0",
+    "morgan": "^1.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
